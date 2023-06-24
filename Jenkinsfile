@@ -24,7 +24,9 @@ pipeline {
             }  
 
             stage('displaying unit test results'){
+                steps{
                     junit 'gameoflife-web/target/surefire-reports/*.xml'
+                }
               }
 
             }
