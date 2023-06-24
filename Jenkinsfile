@@ -1,6 +1,6 @@
 pipeline {
         agent any 
-        triggers { pollSCM('*/2 * * * *') }
+         
         stages {
             stage('cloning gol url') {
                 
@@ -21,6 +21,11 @@ pipeline {
                     archiveArtifacts artifacts: 'gameoflife-web/target/*.war', followSymlinks: false
 
                 }
-            }    
+            }  
+
+            stage('displaying unit test results'){
+                    junit 'gameoflife-web/target/surefire-reports/*.xml'
+              }
+
             }
         }
